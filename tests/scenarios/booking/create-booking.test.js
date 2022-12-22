@@ -2,11 +2,12 @@ import { assert } from "chai";
 import bookerApi from "$root/pages/booker.api";
 import * as data from "$root/data/booking.data";
 import { getObjKey } from "$root/helpers/add-fun-object";
+import * as res_code from "$root/data/res-status.data";
 
 describe("Create Booking Positif Case", () => {
   it("successful create new booking", async () => {
     const res = await bookerApi.createBooking(data.BOOKING);
-    assert.equal(res.status, 200);
+    assert.equal(res.status, res_code.STATUS.OK);
 
     const { booking: resBooking } = res.data;
 
