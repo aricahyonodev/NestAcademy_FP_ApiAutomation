@@ -1,6 +1,5 @@
-export let BOOKING_ID = null
-export const BOOKING_ID_NOT_REGISTERED = 900000
-export const BOOKING_ID_STRING = "ABC"
+export const BOOKING_ID_NOT_REGISTERED = 900000;
+export const BOOKING_ID_STRING = "ABC";
 
 export const BOOKING = {
   firstname: "user_test",
@@ -10,6 +9,18 @@ export const BOOKING = {
   bookingdates: {
     checkin: "2018-01-01",
     checkout: "2019-01-01",
+  },
+  additionalneeds: "Breakfast",
+};
+
+export const UPDATE_BOOKING = {
+  firstname: "user_test_updated",
+  lastname: "kelompok 2 updated",
+  totalprice: 112,
+  depositpaid: false,
+  bookingdates: {
+    checkin: "2023-01-01",
+    checkout: "2023-02-02",
   },
   additionalneeds: "Breakfast",
 };
