@@ -22,7 +22,7 @@ export const UPDATE_BOOKING = {
     checkin: "2023-01-01",
     checkout: "2023-02-02",
   },
-  additionalneeds: "Breakfast",
+  additionalneeds: "DoubleBed",
 };
 
 export const BOOKING_NOT_REGISTERED = {

@@ -11,7 +11,7 @@ describe("Update Booking - PUT /booking/:id", () => {
     let headers = {};
 
     before(async () => {
-      // Create authorized token
+      // Create authorized headers
       const createTokenResp = await bookerApi.createToken(
         userData.USERS_REGISTERED
       );
@@ -23,7 +23,10 @@ describe("Update Booking - PUT /booking/:id", () => {
       // Create a booking to update
       const res = await bookerApi.createBooking(bookingData.BOOKING);
       bookingId = res.data.bookingid;
-    }, 5000);
+
+      // Telling Mocha that the hook is finished running and it can proceed with the tests.
+      return Promise.resolve();
+    });
 
     it("Verify that the API returns a 200 status code when updating a booking successfully", async () => {
       const res = await bookerApi.updateBooking(
