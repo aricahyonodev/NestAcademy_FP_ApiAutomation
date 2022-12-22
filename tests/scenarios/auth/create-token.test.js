@@ -2,12 +2,13 @@ import { assert } from "chai";
 import bookerApi from "$root/pages/booker.api";
 import * as data from "$root/data/user.data";
 import * as auth from "$root/data/auth.data";
+import * as res_code from "$root/data/res-status.data";
 import { getObjKey } from "../../helpers/add-fun-object";
 
 describe("Create Token Positif Case", () => {
   it("successful create token with data username & password registered", async () => {
     const res = await bookerApi.createToken(data.USERS_REGISTERED);
-    assert.equal(res.status, 200);
+    assert.equal(res.status, res_code.STATUS.OK);
   });
 });
 
@@ -15,7 +16,7 @@ describe("Create Token Negative Case", () => {
   it("create token with username & password not registered", async () => {
     const res = await bookerApi.createToken(data.USERS_NOT_REGISTERED);
     
-    assert.equal(res.status, 200);
+    assert.equal(res.status, res_code.STATUS.OK);
 
      const valBadCredential = auth.BAD_CREDENTIALS.reason;
      const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
@@ -35,7 +36,7 @@ describe("Create Token Negative Case", () => {
 
     const res = await bookerApi.createToken(newData);
 
-    assert.equal(res.status, 200);
+    assert.equal(res.status, res_code.STATUS.OK);
 
     const valBadCredential = auth.BAD_CREDENTIALS.reason;
     const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
@@ -54,7 +55,7 @@ describe("Create Token Negative Case", () => {
 
      const res = await bookerApi.createToken(newData);
 
-    assert.equal(res.status, 200);
+    assert.equal(res.status, res_code.STATUS.OK);
 
     const valBadCredential = auth.BAD_CREDENTIALS.reason;
     const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
@@ -64,7 +65,7 @@ describe("Create Token Negative Case", () => {
   it("create token with username & password empty", async () => {
      const res = await bookerApi.createToken(data.USERS_EMPTY);
 
-    assert.equal(res.status, 200);
+    assert.equal(res.status, res_code.STATUS.OK);
 
     const valBadCredential = auth.BAD_CREDENTIALS.reason;
     const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
@@ -83,7 +84,7 @@ describe("Create Token Negative Case", () => {
 
      const res = await bookerApi.createToken(newData);
 
-     assert.equal(res.status, 200);
+     assert.equal(res.status, res_code.STATUS.OK);
 
      const valBadCredential = auth.BAD_CREDENTIALS.reason;
      const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
@@ -102,7 +103,7 @@ describe("Create Token Negative Case", () => {
 
       const res = await bookerApi.createToken(newData);
 
-      assert.equal(res.status, 200);
+      assert.equal(res.status, res_code.STATUS.OK);
 
       const valBadCredential = auth.BAD_CREDENTIALS.reason;
       const keyBadCredential = getObjKey(
@@ -124,7 +125,7 @@ describe("Create Token Negative Case", () => {
 
        const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, 200);
+       assert.equal(res.status, res_code.STATUS.OK);
 
        const valBadCredential = auth.BAD_CREDENTIALS.reason;
        const keyBadCredential = getObjKey(
@@ -146,7 +147,7 @@ describe("Create Token Negative Case", () => {
 
        const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, 200);
+       assert.equal(res.status, res_code.STATUS.OK);
 
        const valBadCredential = auth.BAD_CREDENTIALS.reason;
        const keyBadCredential = getObjKey(
@@ -165,7 +166,7 @@ describe("Create Token Negative Case", () => {
 
        const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, 200);
+       assert.equal(res.status, res_code.STATUS.OK);
 
        const valBadCredential = auth.BAD_CREDENTIALS.reason;
        const keyBadCredential = getObjKey(
@@ -184,7 +185,7 @@ describe("Create Token Negative Case", () => {
 
        const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, 200);
+       assert.equal(res.status, res_code.STATUS.OK);
 
        const valBadCredential = auth.BAD_CREDENTIALS.reason;
        const keyBadCredential = getObjKey(
@@ -203,7 +204,7 @@ describe("Create Token Negative Case", () => {
 
        const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, 200);
+       assert.equal(res.status, res_code.STATUS.OK);
 
        const valBadCredential = auth.BAD_CREDENTIALS.reason;
        const keyBadCredential = getObjKey(
@@ -222,7 +223,7 @@ describe("Create Token Negative Case", () => {
 
        const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, 200);
+       assert.equal(res.status, res_code.STATUS.OK);
 
        const valBadCredential = auth.BAD_CREDENTIALS.reason;
        const keyBadCredential = getObjKey(
@@ -241,7 +242,7 @@ describe("Create Token Negative Case", () => {
 
        const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, 200);
+       assert.equal(res.status, res_code.STATUS.OK);
 
        const valBadCredential = auth.BAD_CREDENTIALS.reason;
        const keyBadCredential = getObjKey(
@@ -260,7 +261,7 @@ describe("Create Token Negative Case", () => {
 
        const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, 200);
+       assert.equal(res.status, res_code.STATUS.OK);
 
        const valBadCredential = auth.BAD_CREDENTIALS.reason;
        const keyBadCredential = getObjKey(
