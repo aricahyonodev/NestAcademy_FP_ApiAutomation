@@ -22,18 +22,17 @@ describe("Get Booking By Id Positif Case", () => {
       );
     });
 });
+
 describe("Get Booking By Id Negative Case", () => {
- 
-    it("get booking by id not registered", async () => {
-      const res = await bookerApi.getBookingById(data.BOOKING_ID_NOT_REGISTERED);
-      assert.equal(res.status, 404);
-      assert.equal(res.data, "Not Found");
-    });
+  it("get booking by id not registered", async () => {
+    const res = await bookerApi.getBookingById(data.BOOKING_ID_NOT_REGISTERED);
+    assert.equal(res.status, 404);
+    assert.equal(res.data, "Not Found");
+  });
 
-    it("get booking by id string", async () => {
-      const res = await bookerApi.getBookingById(data.BOOKING_ID_STRING);
-      assert.equal(res.status, res_code.STATUS.NOT_FOUND);
-      assert.equal(res.data, "Not Found");
-    });
-
+  it("get booking by id string", async () => {
+    const res = await bookerApi.getBookingById(data.BOOKING_ID_STRING);
+    assert.equal(res.status, res_code.STATUS.NOT_FOUND);
+    assert.equal(res.data, "Not Found");
+  });
 });
