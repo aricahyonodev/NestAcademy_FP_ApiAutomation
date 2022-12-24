@@ -10,6 +10,11 @@ const bookerApi = {
   createBooking: (data) => BaseApi.post("/booking", data),
   updateBooking: (bookingId, bookingData, headers) =>
     BaseApiSeed(headers).put(`/booking/${bookingId}`, bookingData),
+  partialUpdateBooking: (bookingId, bookingData, headers) =>
+    BaseApiSeed(headers).patch(`/booking/${bookingId}`, bookingData),
+  deleteBooking: (bookingId, headers) =>
+    BaseApiSeed(headers).delete(`/booking/${bookingId}`),
+  ping: () => BaseApi.get("/ping"),
 };
 
 export default bookerApi;

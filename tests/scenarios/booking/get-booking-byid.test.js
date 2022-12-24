@@ -10,6 +10,7 @@ describe("Get Booking By Id Positif Case", () => {
     // runs before all tests in this file regardless where this line is defined.
     const res = await bookerApi.createBooking(data.BOOKING);
     bookingid = res.data.bookingid;
+    return Promise.resolve();
   });
 
     it("successful get booking by id registered", async () => {

@@ -25,6 +25,11 @@ export const UPDATE_BOOKING = {
   additionalneeds: "DoubleBed",
 };
 
+export const PARTIAL_UPDATE_BOOKING = {
+  firstname: "user_test_updated",
+  lastname: "kelompok 2 updated",
+};
+
 export const BOOKING_NOT_REGISTERED = {
   firstname: "user_test REGISTERED",
   lastname: "kelompok 2 REGISTERED",
