@@ -5,8 +5,10 @@
   "license": "MIT",
   "author": "Kelompok 2 Nest Academy QA Batch 7 (Ari Cahyono & Syahiid Nur Kamil)",
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
     "axios": "^1.2.1",
     "chai": "^4.3.7",
+    "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "link-module-alias": "^1.2.0",
     "mocha": "^10.2.0",

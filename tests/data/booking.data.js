@@ -1,3 +1,6 @@
+import { faker } from "@faker-js/faker";
+import dayjs from "dayjs";
+
 export const BOOKING_ID_NOT_REGISTERED = 900000;
 export const BOOKING_ID_STRING = "ABC";
 
@@ -13,21 +16,39 @@ export const BOOKING = {
   additionalneeds: "Breakfast",
 };
 
+const checkinTime = dayjs(faker.datatype.datetime());
+const checkinDate = checkinTime.format("YYYY-MM-DD");
+const checkoutDate = checkinTime
+  .add(faker.datatype.number({ min: 1, max: 31 }), "day")
+  .format("YYYY-MM-DD");
+
 export const UPDATE_BOOKING = {
-  firstname: "user_test_updated",
-  lastname: "kelompok 2 updated",
-  totalprice: 112,
-  depositpaid: false,
+  firstname: faker.name.firstName(),
+  lastname: faker.name.lastName(),
+  totalprice: faker.datatype.number({ min: 50000, max: 2000000 }),
+  depositpaid: faker.datatype.boolean(),
   bookingdates: {
-    checkin: "2023-01-01",
-    checkout: "2023-02-02",
+    checkin: checkinDate,
+    checkout: checkoutDate,
   },
-  additionalneeds: "DoubleBed",
+  additionalneeds: faker.word.adverb(),
+};
+
+export const INVALID_UPDATE_BOOKING = {
+  firstname: true,
+  lastname: false,
+  totalprice: "string",
+  depositpaid: [],
+  bookingdates: {
+    checkin: "XXXX",
+    checkout: "XXX",
+  },
+  additionalneeds: 1,
 };
 
 export const PARTIAL_UPDATE_BOOKING = {
-  firstname: "user_test_updated",
-  lastname: "kelompok 2 updated",
+  firstname: faker.name.firstName(),
+  lastname: faker.name.lastName(),
 };
 
 export const BOOKING_NOT_REGISTERED = {
