@@ -9,28 +9,28 @@ describe("Create Token Positif Case", () => {
   it("successful create token with data username & password registered", async () => {
     const res = await bookerApi.createToken(data.USERS_REGISTERED);
     assert.equal(res.status, res_code.STATUS.OK);
+    assert.hasAllKeys(res.data, "token");
   });
 });
 
 describe("Create Token Negative Case", () => {
   it("create token with username & password not registered", async () => {
     const res = await bookerApi.createToken(data.USERS_NOT_REGISTERED);
-    
+
     assert.equal(res.status, res_code.STATUS.OK);
 
-     const valBadCredential = auth.BAD_CREDENTIALS.reason;
-     const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
-     assert.propertyVal(res.data, keyBadCredential , valBadCredential);
+    const valBadCredential = auth.BAD_CREDENTIALS.reason;
+    const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
+    assert.propertyVal(res.data, keyBadCredential, valBadCredential);
   });
 
   it("create token with username registered & password not registered", async () => {
-
     const valUsername = data.USERS_REGISTERED.username;
     const keyUsername = getObjKey(data.USERS_REGISTERED, valUsername);
     const valPassword = data.USERS_NOT_REGISTERED.password;
     const keyPassword = getObjKey(data.USERS_NOT_REGISTERED, valPassword);
 
-    const newData = {}
+    const newData = {};
     newData[keyUsername] = valUsername;
     newData[keyPassword] = valPassword;
 
@@ -49,11 +49,11 @@ describe("Create Token Negative Case", () => {
     const valPassword = data.USERS_REGISTERED.password;
     const keyPassword = getObjKey(data.USERS_REGISTERED, valPassword);
 
-     const newData = {};
-     newData[keyUsername] = valUsername;
-     newData[keyPassword] = valPassword;
+    const newData = {};
+    newData[keyUsername] = valUsername;
+    newData[keyPassword] = valPassword;
 
-     const res = await bookerApi.createToken(newData);
+    const res = await bookerApi.createToken(newData);
 
     assert.equal(res.status, res_code.STATUS.OK);
 
@@ -63,7 +63,7 @@ describe("Create Token Negative Case", () => {
   });
 
   it("create token with username & password empty", async () => {
-     const res = await bookerApi.createToken(data.USERS_EMPTY);
+    const res = await bookerApi.createToken(data.USERS_EMPTY);
 
     assert.equal(res.status, res_code.STATUS.OK);
 
@@ -72,205 +72,175 @@ describe("Create Token Negative Case", () => {
     assert.propertyVal(res.data, keyBadCredential, valBadCredential);
   });
 
-   it("create token with username empty & password registered", async () => {
-     const valUsername = data.USERS_EMPTY.username;
-     const keyUsername = getObjKey(data.USERS_EMPTY, valUsername);
-     const valPassword = data.USERS_REGISTERED.password;
-     const keyPassword = getObjKey(data.USERS_REGISTERED, valPassword);
+  it("create token with username empty & password registered", async () => {
+    const valUsername = data.USERS_EMPTY.username;
+    const keyUsername = getObjKey(data.USERS_EMPTY, valUsername);
+    const valPassword = data.USERS_REGISTERED.password;
+    const keyPassword = getObjKey(data.USERS_REGISTERED, valPassword);
 
-     const newData = {};
-     newData[keyUsername] = valUsername;
-     newData[keyPassword] = valPassword;
+    const newData = {};
+    newData[keyUsername] = valUsername;
+    newData[keyPassword] = valPassword;
 
-     const res = await bookerApi.createToken(newData);
+    const res = await bookerApi.createToken(newData);
 
-     assert.equal(res.status, res_code.STATUS.OK);
+    assert.equal(res.status, res_code.STATUS.OK);
 
-     const valBadCredential = auth.BAD_CREDENTIALS.reason;
-     const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
-     assert.propertyVal(res.data, keyBadCredential, valBadCredential);
-   });
+    const valBadCredential = auth.BAD_CREDENTIALS.reason;
+    const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
+    assert.propertyVal(res.data, keyBadCredential, valBadCredential);
+  });
 
-    it("create token with username empty & password not registered", async () => {
-      const valUsername = data.USERS_EMPTY.username;
-      const keyUsername = getObjKey(data.USERS_EMPTY, valUsername);
-      const valPassword = data.USERS_NOT_REGISTERED.password;
-      const keyPassword = getObjKey(data.USERS_NOT_REGISTERED, valPassword);
+  it("create token with username empty & password not registered", async () => {
+    const valUsername = data.USERS_EMPTY.username;
+    const keyUsername = getObjKey(data.USERS_EMPTY, valUsername);
+    const valPassword = data.USERS_NOT_REGISTERED.password;
+    const keyPassword = getObjKey(data.USERS_NOT_REGISTERED, valPassword);
 
-      const newData = {};
-      newData[keyUsername] = valUsername;
-      newData[keyPassword] = valPassword;
+    const newData = {};
+    newData[keyUsername] = valUsername;
+    newData[keyPassword] = valPassword;
 
-      const res = await bookerApi.createToken(newData);
+    const res = await bookerApi.createToken(newData);
 
-      assert.equal(res.status, res_code.STATUS.OK);
+    assert.equal(res.status, res_code.STATUS.OK);
 
-      const valBadCredential = auth.BAD_CREDENTIALS.reason;
-      const keyBadCredential = getObjKey(
-        auth.BAD_CREDENTIALS,
-        valBadCredential
-      );
-      assert.propertyVal(res.data, keyBadCredential, valBadCredential);
-    });
+    const valBadCredential = auth.BAD_CREDENTIALS.reason;
+    const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
+    assert.propertyVal(res.data, keyBadCredential, valBadCredential);
+  });
 
-     it("create token with username registered & password empty", async () => {
-       const valUsername = data.USERS_EMPTY.username;
-       const keyUsername = getObjKey(data.USERS_EMPTY, valUsername);
-       const valPassword = data.USERS_REGISTERED.password;
-       const keyPassword = getObjKey(data.USERS_REGISTERED, valPassword);
+  it("create token with username registered & password empty", async () => {
+    const valUsername = data.USERS_REGISTERED.username;
+    const keyUsername = getObjKey(data.USERS_REGISTERED, valUsername);
+    const valPassword = data.USERS_EMPTY.password;
+    const keyPassword = getObjKey(data.USERS_EMPTY, valPassword);
 
-       const newData = {};
-       newData[keyUsername] = valUsername;
-       newData[keyPassword] = valPassword;
+    const newData = {};
+    newData[keyUsername] = valUsername;
+    newData[keyPassword] = valPassword;
 
-       const res = await bookerApi.createToken(newData);
+    const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, res_code.STATUS.OK);
+    assert.equal(res.status, res_code.STATUS.OK);
 
-       const valBadCredential = auth.BAD_CREDENTIALS.reason;
-       const keyBadCredential = getObjKey(
-         auth.BAD_CREDENTIALS,
-         valBadCredential
-       );
-       assert.propertyVal(res.data, keyBadCredential, valBadCredential);
-     });
+    const valBadCredential = auth.BAD_CREDENTIALS.reason;
+    const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
+    assert.propertyVal(res.data, keyBadCredential, valBadCredential);
+  });
 
-     it("create token with username registered & password empty", async () => {
-       const valUsername = data.USERS_EMPTY.username;
-       const keyUsername = getObjKey(data.USERS_EMPTY, valUsername);
-       const valPassword = data.USERS_NOT_REGISTERED.password;
-       const keyPassword = getObjKey(data.USERS_NOT_REGISTERED, valPassword);
+  it("create token with username not registered & password empty", async () => {
+    const valUsername = data.USERS_NOT_REGISTERED.username;
+    const keyUsername = getObjKey(data.USERS_NOT_REGISTERED, valUsername);
+    const valPassword = data.USERS_EMPTY.password;
+    const keyPassword = getObjKey(data.USERS_EMPTY, valPassword);
 
-       const newData = {};
-       newData[keyUsername] = valUsername;
-       newData[keyPassword] = valPassword;
+    const newData = {};
+    newData[keyUsername] = valUsername;
+    newData[keyPassword] = valPassword;
 
-       const res = await bookerApi.createToken(newData);
+    const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, res_code.STATUS.OK);
+    assert.equal(res.status, res_code.STATUS.OK);
 
-       const valBadCredential = auth.BAD_CREDENTIALS.reason;
-       const keyBadCredential = getObjKey(
-         auth.BAD_CREDENTIALS,
-         valBadCredential
-       );
-       assert.propertyVal(res.data, keyBadCredential, valBadCredential);
-     });
+    const valBadCredential = auth.BAD_CREDENTIALS.reason;
+    const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
+    assert.propertyVal(res.data, keyBadCredential, valBadCredential);
+  });
 
-     it("create token with only username registered", async () => {
-       const valUsername = data.USERS_REGISTERED.username;
-       const keyUsername = getObjKey(data.USERS_REGISTERED, valUsername);
+  it("create token with only username registered", async () => {
+    const valUsername = data.USERS_REGISTERED.username;
+    const keyUsername = getObjKey(data.USERS_REGISTERED, valUsername);
 
-       const newData = {};
-       newData[keyUsername] = valUsername;
+    const newData = {};
+    newData[keyUsername] = valUsername;
 
-       const res = await bookerApi.createToken(newData);
+    const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, res_code.STATUS.OK);
+    assert.equal(res.status, res_code.STATUS.OK);
 
-       const valBadCredential = auth.BAD_CREDENTIALS.reason;
-       const keyBadCredential = getObjKey(
-         auth.BAD_CREDENTIALS,
-         valBadCredential
-       );
-       assert.propertyVal(res.data, keyBadCredential, valBadCredential);
-     });
+    const valBadCredential = auth.BAD_CREDENTIALS.reason;
+    const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
+    assert.propertyVal(res.data, keyBadCredential, valBadCredential);
+  });
 
-     it("create token with only username not registered", async () => {
-       const valUsername = data.USERS_NOT_REGISTERED.username;
-       const keyUsername = getObjKey(data.USERS_NOT_REGISTERED, valUsername);
+  it("create token with only username not registered", async () => {
+    const valUsername = data.USERS_NOT_REGISTERED.username;
+    const keyUsername = getObjKey(data.USERS_NOT_REGISTERED, valUsername);
 
-       const newData = {};
-       newData[keyUsername] = valUsername;
+    const newData = {};
+    newData[keyUsername] = valUsername;
 
-       const res = await bookerApi.createToken(newData);
+    const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, res_code.STATUS.OK);
+    assert.equal(res.status, res_code.STATUS.OK);
 
-       const valBadCredential = auth.BAD_CREDENTIALS.reason;
-       const keyBadCredential = getObjKey(
-         auth.BAD_CREDENTIALS,
-         valBadCredential
-       );
-       assert.propertyVal(res.data, keyBadCredential, valBadCredential);
-     });
+    const valBadCredential = auth.BAD_CREDENTIALS.reason;
+    const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
+    assert.propertyVal(res.data, keyBadCredential, valBadCredential);
+  });
 
-     it("create token with only username empty", async () => {
-       const valUsername = data.USERS_EMPTY.username;
-       const keyUsername = getObjKey(data.USERS_EMPTY, valUsername);
+  it("create token with only username empty", async () => {
+    const valUsername = data.USERS_EMPTY.username;
+    const keyUsername = getObjKey(data.USERS_EMPTY, valUsername);
 
-       const newData = {};
-       newData[keyUsername] = valUsername;
+    const newData = {};
+    newData[keyUsername] = valUsername;
 
-       const res = await bookerApi.createToken(newData);
+    const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, res_code.STATUS.OK);
+    assert.equal(res.status, res_code.STATUS.OK);
 
-       const valBadCredential = auth.BAD_CREDENTIALS.reason;
-       const keyBadCredential = getObjKey(
-         auth.BAD_CREDENTIALS,
-         valBadCredential
-       );
-       assert.propertyVal(res.data, keyBadCredential, valBadCredential);
-     });
+    const valBadCredential = auth.BAD_CREDENTIALS.reason;
+    const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
+    assert.propertyVal(res.data, keyBadCredential, valBadCredential);
+  });
 
-     it("create token with only registered", async () => {
-       const valPassword = data.USERS_REGISTERED.password;
-       const keyPassword = getObjKey(data.USERS_REGISTERED, valPassword);
+  it("create token with only password registered", async () => {
+    const valPassword = data.USERS_REGISTERED.password;
+    const keyPassword = getObjKey(data.USERS_REGISTERED, valPassword);
 
-       const newData = {};
-       newData[keyPassword] = valPassword;
+    const newData = {};
+    newData[keyPassword] = valPassword;
 
-       const res = await bookerApi.createToken(newData);
+    const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, res_code.STATUS.OK);
+    assert.equal(res.status, res_code.STATUS.OK);
 
-       const valBadCredential = auth.BAD_CREDENTIALS.reason;
-       const keyBadCredential = getObjKey(
-         auth.BAD_CREDENTIALS,
-         valBadCredential
-       );
-       assert.propertyVal(res.data, keyBadCredential, valBadCredential);
-     });
+    const valBadCredential = auth.BAD_CREDENTIALS.reason;
+    const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
+    assert.propertyVal(res.data, keyBadCredential, valBadCredential);
+  });
 
-     it("create token with only password not registered", async () => {
-       const valPassword = data.USERS_NOT_REGISTERED.password;
-       const keyPassword = getObjKey(data.USERS_NOT_REGISTERED, valPassword);
+  it("create token with only password not registered", async () => {
+    const valPassword = data.USERS_NOT_REGISTERED.password;
+    const keyPassword = getObjKey(data.USERS_NOT_REGISTERED, valPassword);
 
-       const newData = {};
-       newData[keyPassword] = valPassword;
+    const newData = {};
+    newData[keyPassword] = valPassword;
 
-       const res = await bookerApi.createToken(newData);
+    const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, res_code.STATUS.OK);
+    assert.equal(res.status, res_code.STATUS.OK);
 
-       const valBadCredential = auth.BAD_CREDENTIALS.reason;
-       const keyBadCredential = getObjKey(
-         auth.BAD_CREDENTIALS,
-         valBadCredential
-       );
-       assert.propertyVal(res.data, keyBadCredential, valBadCredential);
-     });
+    const valBadCredential = auth.BAD_CREDENTIALS.reason;
+    const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
+    assert.propertyVal(res.data, keyBadCredential, valBadCredential);
+  });
 
-     it("create token with only password empty", async () => {
-       const valPassword = data.USERS_NOT_REGISTERED.password;
-       const keyPassword = getObjKey(data.USERS_NOT_REGISTERED, valPassword);
+  it("create token with only password empty", async () => {
+    const valPassword = data.USERS_NOT_REGISTERED.password;
+    const keyPassword = getObjKey(data.USERS_NOT_REGISTERED, valPassword);
 
-       const newData = {};
-       newData[keyPassword] = valPassword;
+    const newData = {};
+    newData[keyPassword] = valPassword;
 
-       const res = await bookerApi.createToken(newData);
+    const res = await bookerApi.createToken(newData);
 
-       assert.equal(res.status, res_code.STATUS.OK);
+    assert.equal(res.status, res_code.STATUS.OK);
 
-       const valBadCredential = auth.BAD_CREDENTIALS.reason;
-       const keyBadCredential = getObjKey(
-         auth.BAD_CREDENTIALS,
-         valBadCredential
-       );
-       assert.propertyVal(res.data, keyBadCredential, valBadCredential);
-     });
-
-     
-  
+    const valBadCredential = auth.BAD_CREDENTIALS.reason;
+    const keyBadCredential = getObjKey(auth.BAD_CREDENTIALS, valBadCredential);
+    assert.propertyVal(res.data, keyBadCredential, valBadCredential);
+  });
 });
