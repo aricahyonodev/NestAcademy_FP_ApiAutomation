@@ -43,7 +43,7 @@ describe("Create Booking Positif Case", () => {
 
 describe("Create Booking Negative Case", () => {
   describe('Remove 1 Data', () => { 
-    it("create new booking without firsname", async () => {
+    it("create new booking without firstname", async () => {
       const newDataBooking = { ...data.BOOKING };
       delete newDataBooking.firstname;
       const res = await bookerApi.createBooking(newDataBooking);
@@ -57,7 +57,7 @@ describe("Create Booking Negative Case", () => {
       assert.equal(res.status, res_code.STATUS.SERVER_ERROR);
       assert.strictEqual(res.data, res_code.MESSAGE_STATUS.SERVER_ERROR);
     });
-    it("create new booking without totalprice", async () => {
+    it("create new booking without total price", async () => {
       const newDataBooking = { ...data.BOOKING };
       delete newDataBooking.totalprice;
       const res = await bookerApi.createBooking(newDataBooking);
@@ -65,7 +65,7 @@ describe("Create Booking Negative Case", () => {
       assert.strictEqual(res.data, res_code.MESSAGE_STATUS.SERVER_ERROR);
     });
 
-    it("create new booking without depositpaid", async () => {
+    it("create new booking without deposit paid", async () => {
       const newDataBooking = { ...data.BOOKING };
       delete newDataBooking.depositpaid;
       const res = await bookerApi.createBooking(newDataBooking);
@@ -89,7 +89,7 @@ describe("Create Booking Negative Case", () => {
       assert.strictEqual(res.data, res_code.MESSAGE_STATUS.SERVER_ERROR);
     });
 
-    it("create new booking without additionalneeds", async () => {
+    it("create new booking without additional needs", async () => {
       const newDataBooking = { ...data.BOOKING };
       delete newDataBooking.additionalneeds;
       const res = await bookerApi.createBooking(newDataBooking);
@@ -141,7 +141,7 @@ describe("Create Booking Negative Case", () => {
          assert.strictEqual(res.data, res_code.MESSAGE_STATUS.SERVER_ERROR);
        });
 
-       it("create new booking without total price & deposit paid ", async () => {
+       it("create new booking without total price & deposit paid", async () => {
          const removeKey = [keyTotalPriceRegist, keyDepositPaidRegist];
          const newDataBooking = removeKeyObjBooking(removeKey);
 
@@ -243,7 +243,7 @@ describe("Create Booking Negative Case", () => {
         assert.strictEqual(res.data, res_code.MESSAGE_STATUS.SERVER_ERROR);
       });
 
-      it("create new booking without total price, deposit paid, checkin, checkout ", async () => {
+      it("create new booking without total price, deposit paid, checkin, checkout", async () => {
         const removeKey = [keyTotalPriceRegist, keyDepositPaidRegist, keyCheckinRegist, keyCheckoutRegist];
         const newDataBooking = removeKeyObjBooking(removeKey);
 
@@ -293,7 +293,7 @@ describe("Create Booking Negative Case", () => {
         assert.strictEqual(res.data, res_code.MESSAGE_STATUS.SERVER_ERROR);
       });
 
-      it("create new booking without total price, deposit paid, checkin, checkout, additional needs ", async () => {
+      it("create new booking without total price, deposit paid, checkin, checkout, additional needs", async () => {
         const removeKey = [
           keyTotalPriceRegist,
           keyDepositPaidRegist,

@@ -15,8 +15,8 @@ export const BOOKING = {
 };
 
 export const BOOKING_NOT_REGISTERED = {
-  firstname: "user_test REGISTERED",
-  lastname: "kelompok 2 REGISTERED",
+  firstname: "user_test Not REGISTERED",
+  lastname: "kelompok 2 Not REGISTERED",
   totalprice: 111,
   depositpaid: true,
   bookingdates: {

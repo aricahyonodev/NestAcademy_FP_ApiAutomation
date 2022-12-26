@@ -231,13 +231,12 @@ describe("Get Booking Negative Case", () => {
       assert.isEmpty(res.data);
     });
 
-    it.skip("get list booking by firstname registered & lastname not registered", async () => {
+    it.skip("get list booking by firstname registered & checkoout not registered", async () => {
       const objParam = {};
       objParam[keyFirstnameRegist]    = valFirstnameRegist;
       objParam[keyCheckoutNotRegist]  = valCheckoutNotRegist;
 
       const params = genParamsByObject(objParam);
-      console.log(params);
       const res = await bookerApi.getBookingWithParams(params);
       assert.equal(res.status, res_code.STATUS.OK);
       assert.typeOf(res.data, "array");
@@ -268,9 +267,9 @@ describe("Get Booking Negative Case", () => {
       assert.isEmpty(res.data);
     });
 
-    it("get list booking by lastname not registered & lastname registered", async () => {
+    it("get list booking by lastname not registered & checkout registered", async () => {
       const objParam = {};
-      objParam[keyLastnameNotRegist]  = valLastnameNotRegist;
+      objParam[keyLastnameNotRegist] = valLastnameNotRegist;
       objParam[keyCheckoutRegist] = valCheckoutRegist;
 
       const params = genParamsByObject(objParam);
@@ -282,7 +281,7 @@ describe("Get Booking Negative Case", () => {
    })
 
    describe('with 3 params', () => { 
-     it("get list booking by firstname register, lastname, & checout not registered", async () => {
+     it("get list booking by firstname register, lastname, & checkout not registered", async () => {
        const objParam = {};
        objParam[keyFirstnameRegist] = valFirstnameRegist;
        objParam[keyLastnameNotRegist] = valLastnameNotRegist;
@@ -295,7 +294,7 @@ describe("Get Booking Negative Case", () => {
        assert.isEmpty(res.data);
      });
 
-     it.skip("get list booking by firstname register, lastname register, & checout not registered", async () => {
+     it.skip("get list booking by firstname register, lastname register, & checkout not registered", async () => {
        const objParam = {};
        objParam[keyFirstnameRegist]   = valFirstnameRegist;
        objParam[keyLastnameRegist]    = valLastnameRegist;
@@ -308,7 +307,7 @@ describe("Get Booking Negative Case", () => {
        assert.isEmpty(res.data);
      });
 
-     it("get list booking by firstname not register, lastname register, & checout not registered", async () => {
+     it("get list booking by firstname not register, lastname register, & checkout not registered", async () => {
        const objParam = {};
        objParam[keyFirstnameNotRegist] = valFirstnameNotRegist;
        objParam[keyLastnameRegist] = valLastnameRegist;
@@ -321,7 +320,7 @@ describe("Get Booking Negative Case", () => {
        assert.isEmpty(res.data);
      });
 
-     it("get list booking by firstname not register, lastname not register, & checout registered", async () => {
+     it("get list booking by firstname not register, lastname not register, & checkout registered", async () => {
        const objParam = {};
        objParam[keyFirstnameNotRegist] = valFirstnameNotRegist;
        objParam[keyLastnameNotRegist] = valLastnameNotRegist;
@@ -334,7 +333,7 @@ describe("Get Booking Negative Case", () => {
        assert.isEmpty(res.data);
      });
 
-     it("get list booking by firstname register, lastname, & checout not registered", async () => {
+     it("get list booking by firstname, lastname, & checkout not registered", async () => {
        const objParam = {};
        objParam[keyFirstnameNotRegist] = valFirstnameNotRegist;
        objParam[keyLastnameNotRegist] = valLastnameNotRegist;
