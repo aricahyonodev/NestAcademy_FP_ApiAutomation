@@ -1,11 +1,14 @@
 {
-  "name": "API_Automation",
+  "name": "api-automation",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "author": "Kelompok 2 Nest Academy QA Batch 7 (Ari Cahyono & Syahiid Nur Kamil)",
   "dependencies": {
+    "@faker-js/faker": "^7.6.0",
     "axios": "^1.2.1",
     "chai": "^4.3.7",
+    "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "link-module-alias": "^1.2.0",
     "mocha": "^10.2.0",
@@ -14,7 +17,8 @@
   "scripts": {
     "postinstall": "link-module-alias",
     "preinstall": "link-module-alias && link-module-alias clean || true",
-    "mocha:run" : "mocha tests/scenarios --reporter-options reportDir=reports"
+    "mocha:run": "mocha tests/scenarios --reporter-options reportDir=reports",
+    "mocha:run:specific": "mocha tests/scenarios/$TEST_DIR --reporter-options reportDir=reports"
   },
   "_moduleAliases": {
     "$root": "tests",

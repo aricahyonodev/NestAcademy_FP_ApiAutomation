@@ -12,6 +12,7 @@ describe("Get Booking Positif Case", () => {
     // runs before all tests in this file regardless where this line is defined.
     const res = await bookerApi.createBooking(data.BOOKING);
     bookingid = res.data.bookingid;
+    return Promise.resolve();
   });
 
     it("successful get all list booking", async () => {
@@ -155,6 +156,7 @@ describe("Get Booking Negative Case", () => {
        before(async () => {
          // runs before all tests in this file regardless where this line is defined.
           await bookerApi.createBooking(data.BOOKING);
+          return Promise.resolve();
        });
 
       const valFirstnameRegist = data.BOOKING.firstname;
